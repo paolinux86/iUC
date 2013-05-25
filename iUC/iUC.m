@@ -38,7 +38,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationForError:) name:CHECKVERSION_NOTIFICATION_NAME_FAILED object:nil];
 
 	NSLog(@"INFO: Launching download of version info");
-	VersionCheckerOperation *operation = [[VersionCheckerOperation alloc] init];
+	VersionCheckerOperation *operation = [[VersionCheckerOperation alloc] initWithURL:self.updateURL];
 	[queue addOperation:operation];
 }
 
@@ -61,7 +61,10 @@
 	if(versionCode > currentAppVersion) {
 		NSLog(@"INFO: Update available! Notifying delegate");
 		NSString *changes = [result valueForKey:@"changes"];
-		[delegate newVersionAvailableWithVersionCode:versionCode andChanges:changes];
+
+		if([delegate respondsToSelector:@selector(newVersionAvailableWithVersionCode:andChanges:)]) {
+			[delegate newVersionAvailableWithVersionCode:versionCode andChanges:changes];
+		}
 		return;
 	}
 

@@ -20,4 +20,6 @@
 
 @property (strong, nonatomic) NSURL *updateURL;
 
+- (id) initWithURL:(NSURL *) url;
+
 @end

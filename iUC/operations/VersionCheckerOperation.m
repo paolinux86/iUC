@@ -12,9 +12,10 @@
 
 @synthesize updateURL;
 
-- (id) init
+- (id) initWithURL:(NSURL *) url
 {
 	if(self = [super init]) {
+		self.updateURL = url;
 	}
 	
 	return self;
