@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'iUC' target in the 'iUC' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+#endif
