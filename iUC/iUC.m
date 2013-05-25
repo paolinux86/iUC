@@ -71,7 +71,8 @@
 
 	NSTimeInterval currentTimeStamp = [[NSDate date] timeIntervalSince1970];
 	NSNumber *reminderTimeStamp = [settingsManager getReminderTimestamp];
-	if([reminderTimeStamp compare:[NSNumber numberWithDouble:currentTimeStamp]] != NSOrderedAscending) {
+	if([reminderTimeStamp compare:[NSNumber numberWithInt:-1]] != NSOrderedSame &&
+	   [reminderTimeStamp compare:[NSNumber numberWithDouble:currentTimeStamp]] != NSOrderedAscending) {
 		NSLog(@"INFO: reminder timeout wasn't expired");
 		return;
 	}
