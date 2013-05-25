@@ -10,10 +10,12 @@
 #import "iUC_private.h"
 
 #import "VersionCheckerOperation.h"
+#import "VersionUtils.h"
 
 @implementation iUC
 
 @synthesize updateURL;
+@synthesize appStoreURL;
 @synthesize delegate;
 
 - (id) init
@@ -22,6 +24,7 @@
     if(self) {
 		queue = [[NSOperationQueue alloc] init];
 		[queue setMaxConcurrentOperationCount: 1];
+		settingsManager = [iUCSettingsManager getInstance];
 	}
 
 	return self;
@@ -55,30 +58,37 @@
 	}
 
 	NSInteger versionCode = [[result valueForKey:@"version_code"] integerValue];
-	NSInteger currentAppVersion = [[self build] integerValue];
+	NSInteger currentAppVersion = [[VersionUtils build] integerValue];
 	NSLog(@"INFO: currentAppVersion: %d", currentAppVersion);
 	NSLog(@"INFO: versionCode: %d", versionCode);
-	if(versionCode > currentAppVersion) {
-		NSLog(@"INFO: Update available! Notifying delegate");
-		NSString *changes = [result valueForKey:@"changes"];
 
-		if([delegate respondsToSelector:@selector(newVersionAvailableWithVersionCode:andChanges:)]) {
-			[delegate newVersionAvailableWithVersionCode:versionCode andChanges:changes];
-		}
+	if(versionCode <= currentAppVersion) {
+		NSLog(@"INFO: no update available.");
 		return;
 	}
 
-	NSLog(@"INFO: no update available.");
+	NSLog(@"INFO: Update available!");
+
+	NSTimeInterval currentTimeStamp = [[NSDate date] timeIntervalSince1970];
+	NSNumber *reminderTimeStamp = [settingsManager getReminderTimestamp];
+	if([reminderTimeStamp compare:[NSNumber numberWithDouble:currentTimeStamp]] != NSOrderedAscending) {
+		NSLog(@"INFO: reminder timeout wasn't expired");
+		return;
+	}
+
+	if(![delegate respondsToSelector:@selector(newVersionAvailableWithVersionCode:andChanges:)]) {
+		NSLog(@"ERROR: delegate does not respond to selector newVersionAvailableWithVersionCode:andChanges:");
+		return;
+	}
+
+	NSLog(@"INFO: Notifying delegate");
+	NSString *changes = [result valueForKey:@"content"];
+	[delegate newVersionAvailableWithVersionCode:versionCode andChanges:changes andAppStoreURL:appStoreURL];
 }
 
 - (void) receiveNotificationForError:(NSNotification *)notification
 {
 	NSLog(@"ERROR: could not download version infos");
-}
-
-- (NSString *) build
-{
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
 }
 
 @end

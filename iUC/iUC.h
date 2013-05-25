@@ -13,6 +13,8 @@
 @interface iUC : NSObject
 {
 	NSURL *updateURL;
+	NSURL *appStoreURL;
+
 	id<NewVersionAvailableDelegate> delegate;
 	
 @private
@@ -20,6 +22,7 @@
 }
 
 @property (strong, nonatomic) NSURL *updateURL;
+@property (strong, nonatomic) NSURL *appStoreURL;
 @property (strong, nonatomic) id<NewVersionAvailableDelegate> delegate;
 
 - (void) checkVersion;
@@ -29,6 +32,6 @@
 @protocol NewVersionAvailableDelegate <NSObject>
 
 @optional
-- (void)newVersionAvailableWithVersionCode:(NSInteger)newBuildNumber andChanges:(NSString *)changes;
+- (void)newVersionAvailableWithVersionCode:(NSInteger)newBuildNumber andChanges:(NSString *)changes andAppStoreURL:(NSURL *) url;
 
 @end

@@ -17,6 +17,9 @@
 		522C17EE1750E1360006EE9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 522C17EC1750E1360006EE9E /* InfoPlist.strings */; };
 		522C17F11750E1360006EE9E /* iUCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C17F01750E1360006EE9E /* iUCTests.m */; };
 		522C17FE1750ED270006EE9E /* VersionCheckerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C17FD1750ED270006EE9E /* VersionCheckerOperation.m */; };
+		522C1827175110A90006EE9E /* iUCResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C1826175110A90006EE9E /* iUCResponder.m */; };
+		522C183017511FE60006EE9E /* iUCSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C182F17511FE60006EE9E /* iUCSettingsManager.m */; };
+		522C18341751285D0006EE9E /* VersionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C18331751285D0006EE9E /* VersionUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,15 @@
 		522C17FA1750EBA80006EE9E /* iUC_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iUC_private.h; sourceTree = "<group>"; };
 		522C17FC1750ED270006EE9E /* VersionCheckerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VersionCheckerOperation.h; path = operations/VersionCheckerOperation.h; sourceTree = "<group>"; };
 		522C17FD1750ED270006EE9E /* VersionCheckerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VersionCheckerOperation.m; path = operations/VersionCheckerOperation.m; sourceTree = "<group>"; };
+		522C1825175110A90006EE9E /* iUCResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iUCResponder.h; path = categories/iUCResponder.h; sourceTree = "<group>"; };
+		522C1826175110A90006EE9E /* iUCResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iUCResponder.m; path = categories/iUCResponder.m; sourceTree = "<group>"; };
+		522C18291751149F0006EE9E /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/iUCLocalizable.strings; sourceTree = "<group>"; };
+		522C182B175114BC0006EE9E /* it */ = {isa = PBXFileReference; lastKnownFileType = file; name = it; path = it.lproj/iUCLocalizable.strings; sourceTree = "<group>"; };
+		522C182C175118220006EE9E /* iUCSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iUCSettings.plist; sourceTree = "<group>"; };
+		522C182E17511FE60006EE9E /* iUCSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iUCSettingsManager.h; sourceTree = "<group>"; };
+		522C182F17511FE60006EE9E /* iUCSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iUCSettingsManager.m; sourceTree = "<group>"; };
+		522C18321751285D0006EE9E /* VersionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VersionUtils.h; path = utils/VersionUtils.h; sourceTree = "<group>"; };
+		522C18331751285D0006EE9E /* VersionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VersionUtils.m; path = utils/VersionUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +127,10 @@
 		522C17D41750E1360006EE9E /* iUC */ = {
 			isa = PBXGroup;
 			children = (
+				522C1824175110550006EE9E /* categories */,
+				522C182D17511FE60006EE9E /* managers */,
 				522C17FB1750ECFB0006EE9E /* operations */,
+				522C1831175128290006EE9E /* utils */,
 				522C17D71750E1360006EE9E /* iUC.h */,
 				522C17FA1750EBA80006EE9E /* iUC_private.h */,
 				522C17D91750E1360006EE9E /* iUC.m */,
@@ -128,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				522C17D61750E1360006EE9E /* iUC-Prefix.pch */,
+				522C182A1751149F0006EE9E /* iUCLocalizable.strings */,
+				522C182C175118220006EE9E /* iUCSettings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -158,6 +175,33 @@
 				522C17FD1750ED270006EE9E /* VersionCheckerOperation.m */,
 			);
 			name = operations;
+			sourceTree = "<group>";
+		};
+		522C1824175110550006EE9E /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				522C1825175110A90006EE9E /* iUCResponder.h */,
+				522C1826175110A90006EE9E /* iUCResponder.m */,
+			);
+			name = categories;
+			sourceTree = "<group>";
+		};
+		522C182D17511FE60006EE9E /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				522C182E17511FE60006EE9E /* iUCSettingsManager.h */,
+				522C182F17511FE60006EE9E /* iUCSettingsManager.m */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
+		522C1831175128290006EE9E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				522C18321751285D0006EE9E /* VersionUtils.h */,
+				522C18331751285D0006EE9E /* VersionUtils.m */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +258,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				it,
 			);
 			mainGroup = 522C17C61750E1360006EE9E;
 			productRefGroup = 522C17D01750E1360006EE9E /* Products */;
@@ -260,6 +305,9 @@
 			files = (
 				522C17DA1750E1360006EE9E /* iUC.m in Sources */,
 				522C17FE1750ED270006EE9E /* VersionCheckerOperation.m in Sources */,
+				522C1827175110A90006EE9E /* iUCResponder.m in Sources */,
+				522C183017511FE60006EE9E /* iUCSettingsManager.m in Sources */,
+				522C18341751285D0006EE9E /* VersionUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +336,15 @@
 				522C17ED1750E1360006EE9E /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		522C182A1751149F0006EE9E /* iUCLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				522C18291751149F0006EE9E /* en */,
+				522C182B175114BC0006EE9E /* it */,
+			);
+			name = iUCLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

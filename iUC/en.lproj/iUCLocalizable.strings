@@ -1,0 +1,14 @@
+/* 
+  iUCLocalizable.strings
+  iUC
+
+  Created by Paolo Cortis on 25/05/13.
+  Copyright (c) 2013 Paolo Cortis. All rights reserved.
+*/
+
+"ALERT_TITLE" = "Update available";
+"ALERT_MESSAGE" = "An update for this app is available.";
+
+"ALERT_BUTTONS_IGNORE_THIS_VERSION" = "Ignore this version";
+"ALERT_BUTTONS_REMIND_ME_LATER" = "Remind me later";
+"ALERT_BUTTONS_UPDATE_NOW" = "Update now!";

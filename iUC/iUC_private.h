@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+#import "iUCSettingsManager.h"
+
 #ifndef iUC_iUC_private_h
 #define iUC_iUC_private_h
 
-@interface iUC()
+@interface iUC() {
+
+@private
+	iUCSettingsManager *settingsManager;
+}
 
 - (void) receiveNotificationForCompleted: (NSNotification *)notification;
 - (void) receiveNotificationForError: (NSNotification *)notification;
