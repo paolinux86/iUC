@@ -31,13 +31,17 @@
 {
 	if(self = [super init]) {
 		NSString *filePath = [self getDataFilePath];
-		if([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-			NSLog(@"file exists");
-			settings = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-		} else {
+		if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 			NSLog(@"file does not exists");
-			settings = [[NSMutableDictionary alloc] init];
+
+			NSFileManager *fileManager = [NSFileManager defaultManager];
+			NSError *error;
+
+			NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"iUCSettings" ofType:@"plist"];
+			[fileManager copyItemAtPath:resourcePath toPath:filePath error:&error];
 		}
+
+		settings = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
 	}
 
 	return self;
