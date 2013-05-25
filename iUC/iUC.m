@@ -77,7 +77,7 @@
 		return;
 	}
 
-	if(![delegate respondsToSelector:@selector(newVersionAvailableWithVersionCode:andChanges:)]) {
+	if(![delegate respondsToSelector:@selector(newVersionAvailableWithVersionCode:andChanges:andAppStoreURL:)]) {
 		NSLog(@"ERROR: delegate does not respond to selector newVersionAvailableWithVersionCode:andChanges:");
 		return;
 	}
