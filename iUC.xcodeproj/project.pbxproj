@@ -21,6 +21,8 @@
 		522C183017511FE60006EE9E /* iUCSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C182F17511FE60006EE9E /* iUCSettingsManager.m */; };
 		522C18341751285D0006EE9E /* VersionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C18331751285D0006EE9E /* VersionUtils.m */; };
 		522C184C175147A20006EE9E /* iUCResponder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 522C1825175110A90006EE9E /* iUCResponder.h */; };
+		522C184D175149570006EE9E /* iUCLocalizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 522C182A1751149F0006EE9E /* iUCLocalizable.strings */; };
+		522C184E1751495B0006EE9E /* iUCSettings.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 522C182C175118220006EE9E /* iUCSettings.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				522C184E1751495B0006EE9E /* iUCSettings.plist in CopyFiles */,
+				522C184D175149570006EE9E /* iUCLocalizable.strings in CopyFiles */,
 				522C184C175147A20006EE9E /* iUCResponder.h in CopyFiles */,
 				522C17D81750E1360006EE9E /* iUC.h in CopyFiles */,
 			);
