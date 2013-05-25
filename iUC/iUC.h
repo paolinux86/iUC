@@ -8,6 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NewVersionAvailableDelegate;
+
 @interface iUC : NSObject
+{
+	NSURL *updateURL;
+	id<NewVersionAvailableDelegate> delegate;
+	
+@private
+	NSOperationQueue *queue;
+}
+
+@property (strong, nonatomic) NSURL *updateURL;
+@property (strong, nonatomic) id<NewVersionAvailableDelegate> delegate;
+
+- (void) checkVersion;
+
+@end
+
+@protocol NewVersionAvailableDelegate <NSObject>
+
+@optional
+- (void)newVersionAvailableWithVersionCode:(NSInteger)newBuildNumber andChanges:(NSString *)changes;
 
 @end

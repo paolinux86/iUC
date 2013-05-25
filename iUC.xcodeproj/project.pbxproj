@@ -16,6 +16,7 @@
 		522C17E81750E1360006EE9E /* libiUC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 522C17CF1750E1360006EE9E /* libiUC.a */; };
 		522C17EE1750E1360006EE9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 522C17EC1750E1360006EE9E /* InfoPlist.strings */; };
 		522C17F11750E1360006EE9E /* iUCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C17F01750E1360006EE9E /* iUCTests.m */; };
+		522C17FE1750ED270006EE9E /* VersionCheckerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 522C17FD1750ED270006EE9E /* VersionCheckerOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,9 @@
 		522C17ED1750E1360006EE9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		522C17EF1750E1360006EE9E /* iUCTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iUCTests.h; sourceTree = "<group>"; };
 		522C17F01750E1360006EE9E /* iUCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iUCTests.m; sourceTree = "<group>"; };
+		522C17FA1750EBA80006EE9E /* iUC_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iUC_private.h; sourceTree = "<group>"; };
+		522C17FC1750ED270006EE9E /* VersionCheckerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VersionCheckerOperation.h; path = operations/VersionCheckerOperation.h; sourceTree = "<group>"; };
+		522C17FD1750ED270006EE9E /* VersionCheckerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VersionCheckerOperation.m; path = operations/VersionCheckerOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +115,9 @@
 		522C17D41750E1360006EE9E /* iUC */ = {
 			isa = PBXGroup;
 			children = (
+				522C17FB1750ECFB0006EE9E /* operations */,
 				522C17D71750E1360006EE9E /* iUC.h */,
+				522C17FA1750EBA80006EE9E /* iUC_private.h */,
 				522C17D91750E1360006EE9E /* iUC.m */,
 				522C17D51750E1360006EE9E /* Supporting Files */,
 			);
@@ -143,6 +149,15 @@
 				522C17EC1750E1360006EE9E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		522C17FB1750ECFB0006EE9E /* operations */ = {
+			isa = PBXGroup;
+			children = (
+				522C17FC1750ED270006EE9E /* VersionCheckerOperation.h */,
+				522C17FD1750ED270006EE9E /* VersionCheckerOperation.m */,
+			);
+			name = operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				522C17DA1750E1360006EE9E /* iUC.m in Sources */,
+				522C17FE1750ED270006EE9E /* VersionCheckerOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,9 +352,11 @@
 				DSTROOT = /tmp/iUC.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iUC/iUC-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -348,9 +366,12 @@
 				DSTROOT = /tmp/iUC.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iUC/iUC-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
