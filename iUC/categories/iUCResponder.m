@@ -36,6 +36,13 @@
 															NSLocalizedStringFromTable(@"ALERT_BUTTONS_REMIND_ME_LATER", @"iUCLocalizable", @""),
 															NSLocalizedStringFromTable(@"ALERT_BUTTONS_UPDATE_NOW", @"iUCLocalizable", @""),
 															nil];
+	
+
+	[self performSelectorOnMainThread:@selector(openDialog:) withObject:alert waitUntilDone:NO];
+}
+
+- (void) openDialog:(UIAlertView *)alert
+{
 	[alert show];
 }
 
