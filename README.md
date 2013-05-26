@@ -2,6 +2,7 @@ iUC
 ===
 
 iOS App Update Checker.
+
 When included in your iOS application, this library checks if an update is available.
 Permits user to choose between update immediately, remind after a while, or ignore the update.
 
